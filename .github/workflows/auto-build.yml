@@ -1,0 +1,86 @@
+name: AGI Video Auto-Pilot
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-generate:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+
+    # 1. Repository download
+    - name: Repo Download Karna
+      uses: actions/checkout@v4
+
+    # 2. Node.js setup
+    - name: System Setup (Node.js)
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    # 3. Node dependencies
+    - name: Install Dependencies
+      run: |
+        npm install puppeteer-screen-recorder fluent-ffmpeg puppeteer --legacy-peer-deps
+
+    # 4. FFmpeg + Chromium + Hindi Fonts
+    - name: Install System Libraries
+      run: |
+        sudo apt-get update
+
+        sudo apt-get install -y \
+          ffmpeg \
+          chromium-browser \
+          libnss3 \
+          libnspr4 \
+          libatk1.0-0 \
+          libatk-bridge2.0-0 \
+          libcups2 \
+          libdrm2 \
+          libxkbcommon0 \
+          libxcomposite1 \
+          libxdamage1 \
+          libxfixes3 \
+          libxrandr2 \
+          libgbm1 \
+          libasound2t64 \
+          fonts-noto-core \
+          fonts-noto-extra
+
+        # Refresh font cache
+        fc-cache -fv
+
+    # 5. Check Hindi fonts
+    - name: Verify Fonts
+      run: |
+        fc-list | grep -i "Noto Sans Devanagari" | head -5 || true
+
+    # 6. Generate video
+    - name: Video Generate Script Run Karna
+      env:
+        ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+      run: |
+        node build.js
+
+    # 7. Save tracker
+    - name: Save Tracker Data to GitHub (Remember Next Question)
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+        git add tracker.json
+
+        git commit -m "Update question index" || echo "No changes to commit"
+
+        git push
+
+    # 8. Upload generated video
+    - name: Upload Video as Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: Brainbyt_Quiz_Video
+        path: Brainbyt_Final_Video.mp4
