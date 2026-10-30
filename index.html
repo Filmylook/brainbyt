@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=1080,height=1920,initial-scale=1.0"
+>
+
+<title>BrainByt Quiz</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div id="screen">
+
+    <!-- BACKGROUND -->
+
+    <div class="background">
+
+        <div id="bg-image"></div>
+
+        <div class="bg-overlay"></div>
+
+        <div class="bg-vignette"></div>
+
+        <div class="math-background">
+
+            <span>+</span>
+            <span>×</span>
+            <span>÷</span>
+            <span>=</span>
+            <span>π</span>
+            <span>√</span>
+            <span>?</span>
+            <span>12</span>
+            <span>9</span>
+
+        </div>
+
+        <div class="glow glow1"></div>
+        <div class="glow glow2"></div>
+
+    </div>
+
+
+    <!-- BRAND -->
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            🧠
+        </div>
+
+        <div class="brand-name">
+            BrainByt
+        </div>
+
+    </div>
+
+
+    <!-- QUESTION -->
+
+    <section
+        id="question"
+        class="scene question-scene"
+    >
+
+        <div
+            id="category"
+            class="category"
+        >
+            BRAINBYT QUIZ
+        </div>
+
+
+        <div class="question-box">
+
+            <div
+                id="question-text"
+                class="question-text"
+            >
+                प्रश्न यहाँ आएगा
+            </div>
+
+        </div>
+
+
+        <div class="options">
+
+            <div class="option">
+
+                <div class="letter">
+                    A
+                </div>
+
+                <div
+                    id="option0"
+                    class="option-text"
+                ></div>
+
+            </div>
+
+
+            <div class="option">
+
+                <div class="letter">
+                    B
+                </div>
+
+                <div
+                    id="option1"
+                    class="option-text"
+                ></div>
+
+            </div>
+
+
+            <div class="option">
+
+                <div class="letter">
+                    C
+                </div>
+
+                <div
+                    id="option2"
+                    class="option-text"
+                ></div>
+
+            </div>
+
+
+            <div class="option">
+
+                <div class="letter">
+                    D
+                </div>
+
+                <div
+                    id="option3"
+                    class="option-text"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+        <div class="think-text">
+            👀 ध्यान से सोचो...
+        </div>
+
+    </section>
+
+
+    <!-- TIMER -->
+
+    <section
+        id="timer"
+        class="scene timer-scene"
+    >
+
+        <div class="timer-question">
+
+            <div class="timer-label">
+                ANSWER NOW
+            </div>
+
+            <div
+                id="timer-question-text"
+                class="timer-question-text"
+            ></div>
+
+        </div>
+
+
+        <div class="timer-container">
+
+            <svg
+                viewBox="0 0 300 300"
+                class="timer-svg"
+            >
+
+                <circle
+                    class="timer-bg"
+                    cx="150"
+                    cy="150"
+                    r="125"
+                />
+
+                <circle
+                    id="timer-circle"
+                    class="timer-progress"
+                    cx="150"
+                    cy="150"
+                    r="125"
+                />
+
+            </svg>
+
+
+            <div
+                id="countdown"
+                class="countdown"
+            >
+                3
+            </div>
+
+
+            <div class="seconds">
+                SECONDS
+            </div>
+
+        </div>
+
+
+        <div class="timer-text">
+            अपना answer याद रखो
+        </div>
+
+    </section>
+
+
+    <!-- WRONG OPTIONS -->
+
+    <section
+        id="answer"
+        class="scene answer-scene"
+    >
+
+        <div class="answer-heading">
+            ❌ ये दोनों options गलत हैं
+        </div>
+
+
+        <div class="wrong-options">
+
+
+            <!-- WRONG 1 -->
+
+            <div class="wrong-card">
+
+                <div
+                    id="wrong1-letter"
+                    class="wrong-letter"
+                >
+                    A
+                </div>
+
+
+                <div class="wrong-content">
+
+                    <div class="wrong-label">
+
+                        WRONG OPTION
+
+                        <span
+                            id="wrong1-letter-small"
+                        >
+                            A
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        id="wrong1-text"
+                        class="wrong-text"
+                    >
+                        Option A
+                    </div>
+
+                </div>
+
+
+                <div class="wrong-cross">
+                    ✕
+                </div>
+
+            </div>
+
+
+            <!-- WRONG 2 -->
+
+            <div class="wrong-card">
+
+                <div
+                    id="wrong2-letter"
+                    class="wrong-letter"
+                >
+                    B
+                </div>
+
+
+                <div class="wrong-content">
+
+                    <div class="wrong-label">
+
+                        WRONG OPTION
+
+                        <span
+                            id="wrong2-letter-small"
+                        >
+                            B
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        id="wrong2-text"
+                        class="wrong-text"
+                    >
+                        Option B
+                    </div>
+
+                </div>
+
+
+                <div class="wrong-cross">
+                    ✕
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="wrong-bottom">
+            अब सही answer comment करो 👇
+        </div>
+
+    </section>
+
+
+    <!-- COMMENT -->
+
+    <section
+        id="comment"
+        class="scene comment-scene"
+    >
+
+        <div class="comment-title">
+            अब अपना
+        </div>
+
+        <div class="comment-title highlight">
+            ANSWER COMMENT करो!
+        </div>
+
+
+        <div class="comment-icon">
+            💬
+        </div>
+
+
+        <div class="arrow">
+            ↓
+        </div>
+
+
+        <div class="comment-box">
+
+            <span>
+                💬
+            </span>
+
+            <span class="placeholder">
+                Add a comment...
+            </span>
+
+            <span>
+                ➤
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- FINAL -->
+
+    <section
+        id="explanation"
+        class="scene explanation-scene"
+    >
+
+        <div class="why">
+            🤔 सही answer पता है?
+        </div>
+
+
+        <div class="explanation-card">
+
+            <div
+                id="explanation-text"
+                class="explanation-text"
+            >
+                सही answer comment करो!
+            </div>
+
+
+            <div
+                id="step1"
+                class="step"
+            >
+                मैं सही answer pin करूँगा 📌
+            </div>
+
+
+            <div
+                id="step2"
+                class="step"
+            >
+                Comment में A, B, C या D बताओ 👇
+            </div>
+
+        </div>
+
+
+        <div class="follow-box">
+
+            सही answer comment करो!
+
+            <strong>
+                मैं pin करूँगा 📌
+            </strong>
+
+        </div>
+
+
+        <div class="bottom-brand">
+            🧠 BrainByt
+        </div>
+
+    </section>
+
+
+    <!-- PROGRESS -->
+
+    <div class="progress">
+
+        <div id="progress"></div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

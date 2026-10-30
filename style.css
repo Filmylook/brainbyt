@@ -1,0 +1,967 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+html,
+body {
+    width: 1080px;
+    height: 1920px;
+
+    overflow: hidden;
+
+    background: #080b12;
+
+    font-family:
+        "Noto Sans Devanagari",
+        "Noto Sans",
+        Arial,
+        sans-serif;
+}
+
+body {
+    position: relative;
+    color: white;
+}
+
+#screen {
+    position: relative;
+
+    width: 1080px;
+    height: 1920px;
+
+    overflow: hidden;
+
+    background: #080b12;
+}
+
+
+/* =========================================================
+BACKGROUND
+========================================================= */
+
+.background {
+    position: absolute;
+    inset: 0;
+
+    overflow: hidden;
+}
+
+#bg-image {
+    position: absolute;
+    inset: 0;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    transform: scale(1.04);
+
+    filter:
+        saturate(1.05)
+        contrast(1.03);
+
+    z-index: 1;
+
+    opacity: 0;
+}
+
+.bg-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(3,7,18,0.82) 0%,
+            rgba(3,7,18,0.64) 40%,
+            rgba(3,7,18,0.78) 75%,
+            rgba(3,7,18,0.96) 100%
+        );
+
+    z-index: 2;
+}
+
+.bg-vignette {
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            transparent 10%,
+            rgba(0,0,0,0.25) 60%,
+            rgba(0,0,0,0.78) 100%
+        );
+
+    z-index: 3;
+}
+
+.math-background {
+    position: absolute;
+    inset: 0;
+
+    z-index: 4;
+
+    opacity: 0.14;
+
+    pointer-events: none;
+}
+
+.math-background span {
+    position: absolute;
+
+    font-size: 90px;
+
+    font-weight: 900;
+
+    color: white;
+
+    opacity: 0.45;
+}
+
+.math-background span:nth-child(1) {
+    left: 7%;
+    top: 18%;
+}
+
+.math-background span:nth-child(2) {
+    left: 78%;
+    top: 13%;
+}
+
+.math-background span:nth-child(3) {
+    left: 12%;
+    top: 66%;
+}
+
+.math-background span:nth-child(4) {
+    left: 82%;
+    top: 58%;
+}
+
+.math-background span:nth-child(5) {
+    left: 75%;
+    top: 78%;
+}
+
+.math-background span:nth-child(6) {
+    left: 8%;
+    top: 83%;
+}
+
+.math-background span:nth-child(7) {
+    left: 48%;
+    top: 12%;
+}
+
+.math-background span:nth-child(8) {
+    left: 44%;
+    top: 85%;
+}
+
+.math-background span:nth-child(9) {
+    left: 18%;
+    top: 37%;
+}
+
+
+/* =========================================================
+GLOW
+========================================================= */
+
+.glow {
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    border-radius: 50%;
+
+    filter: blur(90px);
+
+    opacity: 0.15;
+
+    z-index: 5;
+}
+
+.glow1 {
+    background: #2878ff;
+
+    top: 300px;
+    left: -180px;
+}
+
+.glow2 {
+    background: #9b36ff;
+
+    right: -180px;
+    bottom: 300px;
+}
+
+
+/* =========================================================
+BRAND
+========================================================= */
+
+.brand {
+    position: absolute;
+
+    top: 55px;
+    left: 55px;
+
+    z-index: 50;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    font-size: 38px;
+
+    font-weight: 900;
+
+    text-shadow:
+        0 4px 20px rgba(0,0,0,0.65);
+}
+
+.brand-icon {
+    font-size: 48px;
+}
+
+
+/* =========================================================
+SCENES
+========================================================= */
+
+.scene {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 20;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform: scale(0.985);
+
+    transition:
+        opacity 0.22s ease,
+        transform 0.22s ease;
+}
+
+.scene.active {
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: scale(1);
+}
+
+
+/* =========================================================
+QUESTION
+========================================================= */
+
+.question-scene {
+    justify-content: flex-start;
+
+    padding-top: 270px;
+}
+
+.category {
+    max-width: 850px;
+
+    padding: 14px 32px;
+
+    border-radius: 100px;
+
+    background:
+        rgba(70,130,255,0.18);
+
+    border:
+        2px solid rgba(100,160,255,0.40);
+
+    font-size: 28px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 35px;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+QUESTION BOX
+========================================================= */
+
+.question-box {
+    width: 900px;
+
+    min-height: 310px;
+
+    max-height: 380px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 42px 55px;
+
+    border-radius: 38px;
+
+    background:
+        rgba(5,10,24,0.94);
+
+    border:
+        2px solid rgba(255,255,255,0.16);
+
+    backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,0.50);
+
+    margin-bottom: 38px;
+}
+
+.question-text {
+    width: 100%;
+
+    font-size: 54px;
+
+    font-weight: 800;
+
+    line-height: 1.35;
+
+    color: white;
+
+    overflow-wrap: break-word;
+
+    word-break: normal;
+
+    text-shadow:
+        0 3px 18px rgba(0,0,0,0.45);
+}
+
+
+/* =========================================================
+OPTIONS
+========================================================= */
+
+.options {
+    width: 900px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 20px;
+}
+
+.option {
+    min-height: 145px;
+
+    max-height: 190px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 22px 25px;
+
+    border-radius: 26px;
+
+    background:
+        rgba(5,12,27,0.94);
+
+    border:
+        2px solid rgba(255,255,255,0.14);
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,0.38);
+
+    overflow: hidden;
+}
+
+.letter {
+    width: 70px;
+    height: 70px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4d8dff,
+            #7548ff
+        );
+
+    font-size: 31px;
+
+    font-weight: 900;
+
+    margin-right: 20px;
+}
+
+.option-text {
+    flex: 1;
+
+    min-width: 0;
+
+    font-size: 35px;
+
+    font-weight: 700;
+
+    line-height: 1.22;
+
+    color: white;
+
+    overflow-wrap: break-word;
+
+    word-break: normal;
+}
+
+.think-text {
+    margin-top: 30px;
+
+    font-size: 34px;
+
+    font-weight: 700;
+
+    color:
+        rgba(255,255,255,0.86);
+}
+
+
+/* =========================================================
+TIMER
+========================================================= */
+
+.timer-scene {
+    justify-content: center;
+
+    padding-top: 80px;
+}
+
+.timer-question {
+    width: 850px;
+
+    text-align: center;
+
+    padding: 35px;
+
+    border-radius: 35px;
+
+    background:
+        rgba(5,10,25,0.90);
+
+    border:
+        2px solid rgba(255,255,255,0.14);
+
+    margin-bottom: 55px;
+}
+
+.timer-label {
+    font-size: 27px;
+
+    font-weight: 900;
+
+    letter-spacing: 4px;
+
+    color: #ffd34f;
+
+    margin-bottom: 18px;
+}
+
+.timer-question-text {
+    font-size: 43px;
+
+    font-weight: 800;
+
+    line-height: 1.35;
+}
+
+.timer-container {
+    position: relative;
+
+    width: 420px;
+    height: 420px;
+}
+
+.timer-svg {
+    width: 100%;
+    height: 100%;
+
+    transform:
+        rotate(-90deg);
+}
+
+.timer-bg {
+    fill: none;
+
+    stroke:
+        rgba(255,255,255,0.12);
+
+    stroke-width: 18;
+}
+
+.timer-progress {
+    fill: none;
+
+    stroke: #ffd447;
+
+    stroke-width: 20;
+
+    stroke-linecap: round;
+
+    stroke-dasharray: 785;
+
+    stroke-dashoffset: 785;
+}
+
+.countdown {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 145px;
+
+    font-weight: 900;
+
+    color: white;
+}
+
+.seconds {
+    position: absolute;
+
+    width: 100%;
+
+    text-align: center;
+
+    bottom: 92px;
+
+    font-size: 25px;
+
+    font-weight: 900;
+
+    letter-spacing: 4px;
+
+    color:
+        rgba(255,255,255,0.65);
+}
+
+.timer-text {
+    margin-top: 55px;
+
+    font-size: 37px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+WRONG OPTIONS
+========================================================= */
+
+.answer-scene {
+    justify-content: center;
+
+    padding-top: 80px;
+}
+
+.answer-heading {
+    width: 900px;
+
+    font-size: 58px;
+
+    font-weight: 900;
+
+    text-align: center;
+
+    margin-bottom: 45px;
+
+    color: #ff5b70;
+}
+
+.wrong-options {
+    width: 900px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 24px;
+}
+
+.wrong-card {
+    width: 900px;
+
+    min-height: 190px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 30px 35px;
+
+    border-radius: 34px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(85,18,32,0.95),
+            rgba(45,8,20,0.95)
+        );
+
+    border:
+        2px solid rgba(255,75,100,0.42);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,0.45);
+}
+
+.wrong-letter {
+    width: 105px;
+    height: 105px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 28px;
+
+    background:
+        rgba(255,255,255,0.10);
+
+    font-size: 58px;
+
+    font-weight: 900;
+
+    margin-right: 28px;
+}
+
+.wrong-content {
+    flex: 1;
+
+    min-width: 0;
+}
+
+.wrong-label {
+    font-size: 24px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    color:
+        rgba(255,255,255,0.60);
+}
+
+.wrong-label span {
+    color: white;
+}
+
+.wrong-text {
+    margin-top: 10px;
+
+    font-size: 43px;
+
+    font-weight: 900;
+
+    line-height: 1.2;
+
+    overflow-wrap: break-word;
+}
+
+.wrong-cross {
+    width: 68px;
+    height: 68px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        #ff405d;
+
+    color: white;
+
+    font-size: 42px;
+
+    font-weight: 900;
+}
+
+.wrong-bottom {
+    margin-top: 38px;
+
+    font-size: 38px;
+
+    font-weight: 800;
+
+    color: #ffd84d;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+COMMENT
+========================================================= */
+
+.comment-title {
+    font-size: 72px;
+
+    font-weight: 900;
+
+    line-height: 1.3;
+
+    text-align: center;
+}
+
+.comment-title.highlight {
+    color: #ffd84d;
+
+    text-shadow:
+        0 0 30px
+        rgba(255,216,77,0.25);
+}
+
+.comment-icon {
+    font-size: 145px;
+
+    margin-top: 55px;
+}
+
+.arrow {
+    font-size: 85px;
+
+    margin-top: 5px;
+}
+
+.comment-box {
+    width: 820px;
+
+    height: 105px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    padding: 0 35px;
+
+    border-radius: 60px;
+
+    background: white;
+
+    color: #555;
+
+    font-size: 32px;
+
+    margin-top: 30px;
+
+    box-shadow:
+        0 20px 60px
+        rgba(0,0,0,0.4);
+}
+
+.placeholder {
+    flex: 1;
+
+    color: #8a8a8a;
+}
+
+
+/* =========================================================
+FINAL
+========================================================= */
+
+.explanation-scene {
+    justify-content: center;
+
+    padding-top: 60px;
+}
+
+.why {
+    font-size: 68px;
+
+    font-weight: 900;
+
+    color: #ffd84d;
+
+    margin-bottom: 42px;
+}
+
+.explanation-card {
+    width: 880px;
+
+    padding: 45px;
+
+    border-radius: 42px;
+
+    background:
+        rgba(8,14,30,0.92);
+
+    border:
+        2px solid
+        rgba(255,255,255,0.13);
+
+    box-shadow:
+        0 30px 80px
+        rgba(0,0,0,0.45);
+}
+
+.explanation-text {
+    font-size: 42px;
+
+    line-height: 1.45;
+
+    font-weight: 800;
+
+    margin-bottom: 30px;
+
+    text-align: center;
+}
+
+.step {
+    padding: 23px 28px;
+
+    margin-top: 18px;
+
+    border-radius: 22px;
+
+    background:
+        rgba(75,130,255,0.13);
+
+    border:
+        1px solid
+        rgba(100,160,255,0.25);
+
+    font-size: 36px;
+
+    font-weight: 700;
+
+    text-align: center;
+}
+
+.follow-box {
+    margin-top: 45px;
+
+    padding: 24px 42px;
+
+    border-radius: 100px;
+
+    background:
+        rgba(255,216,77,0.12);
+
+    border:
+        2px solid
+        rgba(255,216,77,0.32);
+
+    font-size: 31px;
+
+    font-weight: 600;
+
+    text-align: center;
+}
+
+.follow-box strong {
+    color: #ffd84d;
+
+    font-weight: 900;
+}
+
+.bottom-brand {
+    margin-top: 42px;
+
+    font-size: 34px;
+
+    font-weight: 900;
+
+    opacity: 0.8;
+}
+
+
+/* =========================================================
+PROGRESS
+========================================================= */
+
+.progress {
+    position: absolute;
+
+    left: 40px;
+    right: 40px;
+
+    bottom: 35px;
+
+    height: 8px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(255,255,255,0.14);
+
+    z-index: 100;
+}
+
+#progress {
+    width: 0%;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            #4d8dff,
+            #a34dff,
+            #ffd84d
+        );
+}
